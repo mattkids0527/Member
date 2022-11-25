@@ -1,0 +1,21 @@
+{
+    "name": "php_app/new1",
+    "description": "dev php",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "PhpApp\\New1\\": "src/"
+        },
+        "classmap":[
+            "src/test/classmap"
+        ]
+    },
+    "authors": [
+        {
+            "name": "yes"
+        }
+    ],
+    "require": {
+        "fakerphp/faker": "^1.20"
+    }
+}
