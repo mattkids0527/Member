@@ -67,8 +67,8 @@ $counts = count($rows);
   </tbody>
 </table>
         <tfoot>
-                <nav aria-label="Page navigation example">
-                  <ul id="pages" class="pagination"><li class="page-item"><a class="page-link" href="#">Previous</a></li></ul>
+                <nav aria-label="Pages">
+                  <ul id="pages" class="pagination"><li class="page-item" id="pre_li" ><a id="pre_link" onclick="Previous();" class="page-link" href="#">Previous</a></li></ul>
                 </nav>
         </tfoot>
 
@@ -76,10 +76,9 @@ $counts = count($rows);
 
 <script>
 $(document).ready(function(){
-
 <?php
 for($i=1;$i<=$all_pages;$i++){
- echo "$('#pages').append('<li class=\"page-item\"><a class=\"page-link\" href=?page=$i>$i</a></li>');";
+ echo "$('#pages').append('<li id=\"page$i\" class=\"page-item\"><a class=\"page-link\" href=?page=$i>$i</a></li>');";
 }
 
 for($i=0;$i<$counts;$i++){
@@ -94,9 +93,42 @@ for($i=0;$i<$counts;$i++){
 		echo "\n";
 	}
 }
+
+echo "$('#pages').append('<li id=\"next\" class=\"page-item\"><a id=\"next_link\" onclick=\"next();\" class=\"page-link\" href=\"#\">Next</a></li>');";
+
+echo "$('#page$page').addClass(\"active\");";
+
+if($page==1){
+  echo "$('#pre_li').addClass('disabled')";
+}else if($page==$all_pages){
+  echo "$('#next').addClass('disabled')";
+}
 ?>
 
 });
+
+
+
+function Previous(){
+ <?php
+  $tmp1 = $page;
+  if($tmp1>1){
+    $tmp1 = $tmp1-1;
+    echo "$('#pre_link').attr('href','?page=$tmp1');";
+  }
+ ?>
+}
+
+function next(){
+ <?php
+  $tmp2 = $page;
+  if($tmp2 < $all_pages){
+    $tmp2 = $tmp2+1;
+    echo "$('#next_link').attr('href','?page=$tmp2');";
+  }
+ ?>
+}
+
 
 </script>
 
