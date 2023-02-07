@@ -1,0 +1,25 @@
+.main {
+    position: relative;
+    /* margin-top: 100px; */
+    z-index: 1;
+}
+
+.bb {
+    border-block: 1rem solid;
+    writing-mode: horizontal-tb;
+    background-color: rgb(255, 255, 255);
+}
+
+button {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+}
